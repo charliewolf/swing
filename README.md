@@ -153,7 +153,7 @@ card = stack.createCard(HTMLElement);
 
 | Name | Description |
 | --- | --- |
-| `stack.createCard(element)` | Creates an instance of Card and associates it with the element. |
+| `stack.createCard(element, prepend)` | Creates an instance of Card and associates it with the element. Prepend is an optional boolean which, when set to true, places the card at the bottom of the stack rather than the top. This is useful for dynamically adding cards. |
 | `stack.getCard(element)` | Returns card associated with an element. |
 | `stack.on(event, listener)` | Attaches an [event listener](#events). |
 | `card.on(event, listener)` | Attaches an [event listener](#events). |

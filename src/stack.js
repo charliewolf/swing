@@ -56,11 +56,11 @@ Stack = (config) => {
      * @param {HTMLElement} element
      * @return {Card}
      */
-    stack.createCard = (element) => {
+    stack.createCard = (element, prepend) => {
         let card,
             events;
 
-        card = Card(stack, element);
+        card = Card(stack, element, prepend);
 
         events = [
             'throwout',
