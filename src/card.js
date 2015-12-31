@@ -12,7 +12,8 @@ let Card;
  * @param {HTMLElement} targetElement
  * @return {Object} An instance of Card.
  */
-Card = (stack, targetElement) => {
+
+Card = (stack, targetElement, prepend) => {
     let card,
         config,
         construct,
@@ -65,7 +66,8 @@ Card = (stack, targetElement) => {
             ]
         });
 
-        Card.appendToParent(targetElement);
+        if(prepend) Card.prependToParent(targetElement);
+        else Card.appendToParent(targetElement);
 
         eventEmitter.on('panstart', () => {
             Card.appendToParent(targetElement);
@@ -392,6 +394,24 @@ Card.appendToParent = (element) => {
         parentNode.removeChild(element);
         parentNode.appendChild(element);
     }
+};
+
+/**
+ * Prepend element to the parentNode.
+ *
+ * This makes the element last among the siblings. The reason for using
+ * this as opposed to zIndex is to allow CSS selector :nth-child.
+ *
+ * Invoked in the event of mousedown.
+ * Invoked when card is added to the stack.
+ *
+ * @param {HTMLElement} element The target element.
+ * @return {undefined}
+ */
+Card.prependBelow = (element) => {
+    let parent = element.parentNode;
+    parent.removeChild(element);
+    parent.insertBefore(element,parent.firstChild);
 };
 
 /**
