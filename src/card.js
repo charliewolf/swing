@@ -408,7 +408,7 @@ Card.appendToParent = (element) => {
  * @param {HTMLElement} element The target element.
  * @return {undefined}
  */
-Card.prependBelow = (element) => {
+Card.prependToParent = (element) => {
     let parent = element.parentNode;
     parent.removeChild(element);
     parent.insertBefore(element,parent.firstChild);
