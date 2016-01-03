@@ -119,7 +119,7 @@ Card = (stack, targetElement, prepend) => {
         // to the touchstart event for touch enabled devices and mousedown otherwise.
         if (util.isTouchDevice()) {
             targetElement.addEventListener('touchstart', (e) => {
-                e.stopPropagation();
+                e.stopPropagation(e);
                 eventEmitter.trigger('panstart');
             });
 
@@ -128,14 +128,14 @@ Card = (stack, targetElement, prepend) => {
             (() => {
                 let dragging;
 
-                targetElement.addEventListener('touchstart', () => {
+                targetElement.addEventListener('touchstart', (e) => {
                     dragging = true;
-                    e.stopPropagation();
+                    e.stopPropagation(e);
                 });
 
-                targetElement.addEventListener('touchend', () => {
+                targetElement.addEventListener('touchend', (e) => {
                     dragging = false;
-                    e.stopPropagation();
+                    e.stopPropagation(e);
                 });
 
                 global.addEventListener('touchmove', (e) => {
