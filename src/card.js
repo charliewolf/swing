@@ -130,17 +130,20 @@ Card = (stack, targetElement, prepend) => {
 
                 targetElement.addEventListener('touchstart', () => {
                     dragging = true;
+                    e.stopPropagation();
                 });
 
                 targetElement.addEventListener('touchend', () => {
                     dragging = false;
+                    e.stopPropagation();
                 });
 
                 global.addEventListener('touchmove', (e) => {
                     if (dragging) {
                         e.preventDefault();
-                        e.stopPropagation();
                     }
+                    e.stopPropagation();
+
                 });
             })();
         } else {
