@@ -81,6 +81,8 @@ Card = (stack, targetElement, prepend) => {
 
             isDraging = true;
 
+            targetElement.style.zIndex = '2000';
+
             (function animation () {
                 if (isDraging) {
                     doMove();
@@ -101,6 +103,8 @@ Card = (stack, targetElement, prepend) => {
 
             isDraging = false;
 
+            targetElement.style.zIndex = 'auto';
+            
             x = lastTranslate.x + e.deltaX;
             y = lastTranslate.y + e.deltaY;
 
@@ -130,11 +134,13 @@ Card = (stack, targetElement, prepend) => {
 
                 targetElement.addEventListener('touchstart', (e) => {
                     dragging = true;
+                    targetElement.style.zIndex = '2000';
                     e.stopPropagation(e);
                 });
 
                 targetElement.addEventListener('touchend', (e) => {
                     dragging = false;
+                    targetElement.style.zIndex = 'auto';
                     e.stopPropagation(e);
                 });
 
