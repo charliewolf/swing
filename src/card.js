@@ -66,8 +66,6 @@ Card = (stack, targetElement, prepend) => {
             ]
         });
 
-        if(prepend) Card.prependToParent(targetElement);
-        else Card.appendToParent(targetElement);
 
         eventEmitter.on('panstart', () => {
             Card.appendToParent(targetElement);
